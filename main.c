@@ -63,9 +63,8 @@ void main(void)
 		TASK_MY_SECOND_TASK_PRIORITY,/* Priority at which the task is created. */
 		&_taskSecondHandle);      /* Used to pass out the created task's handle. */
 
-	/* Create a mutex */
+	/* Create a mutex - it is automaticly given when created */
 	_printfMutex = xSemaphoreCreateMutex();
-	xSemaphoreGive(_printfMutex);
 
 	// Let the operating system take over :)
 	vTaskStartScheduler();
