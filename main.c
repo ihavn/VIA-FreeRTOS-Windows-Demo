@@ -15,13 +15,17 @@ TaskHandle_t _taskSecondHandle = NULL;
 
 /* Semaphors */
 SemaphoreHandle_t _printfMutex = NULL;
+
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
 {
 	for (;;)
 	{
+		if (xSemaphoreTake(_printfMutex, portMAX_DELAY)) {
+			puts("Hi from My Task");
+			xSemaphoreGive(_printfMutex);
+		}
 		vTaskDelay(pdMS_TO_TICKS(200));
-		puts("Hi from My Task");
 	}
 }
 
@@ -30,8 +34,11 @@ void taskMySeccondTask(void* pvParameters)
 {
 	for (;;)
 	{
-		vTaskDelay(pdMS_TO_TICKS(100));
-		puts("Hi from My Second Task");
+		if (xSemaphoreTake(_printfMutex, portMAX_DELAY)) {
+			puts("Hi from My Second Task");
+			xSemaphoreGive(_printfMutex);
+		}
+		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
 }
 
