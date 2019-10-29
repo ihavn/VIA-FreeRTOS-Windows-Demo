@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "FreeRTOS.h"
 #include "task.h"
+#include "queue.h"
 
 /* Priorities at which the tasks are created. */
 #define TASK_MY_TASK_PRIORITY			( tskIDLE_PRIORITY + 1 )
@@ -12,23 +13,41 @@
 
 TaskHandle_t _taskSecondHandle = NULL;
 
+/* Queue handles */
+QueueHandle_t intQueue = NULL;
+
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
+	int recValue;
+
 	for (;;)
 	{
-		vTaskDelay(pdMS_TO_TICKS(200));
-		puts("Hi from My Task");
+			xQueueReceive(intQueue, &recValue, portMAX_DELAY);
+			printf("Received: %d\n", recValue);
 	}
 }
 
 // --------------------------------------------------------------------------------------
 void taskMySeccondTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
+	int counter = 0;
+
 	for (;;)
 	{
-		vTaskDelay(pdMS_TO_TICKS(100));
-		puts("Hi from My Second Task");
+		for (int i = 0; i < 5; i++)
+		{
+			puts("Send");
+			xQueueSend(intQueue, &counter, portMAX_DELAY);
+			counter++;
+		}
+		vTaskDelay(pdMS_TO_TICKS(200));
 	}
 }
 
@@ -52,6 +71,9 @@ void main(void)
 		(void*)2,    /* Parameter passed into the task. */
 		TASK_MY_SECOND_TASK_PRIORITY,/* Priority at which the task is created. */
 		&_taskSecondHandle);      /* Used to pass out the created task's handle. */
+
+	// Create Queue that can hold 10 integers
+	intQueue = xQueueCreate(10,	sizeof(int));
 
 	// Let the operating system take over :)
 	vTaskStartScheduler();
