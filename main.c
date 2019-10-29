@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "FreeRTOS.h"
 #include "task.h"
+#include "semphr.h"
 
 /* Priorities at which the tasks are created. */
 #define TASK_MY_TASK_PRIORITY			( tskIDLE_PRIORITY + 1 )
