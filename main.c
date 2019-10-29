@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "FreeRTOS.h"
 #include "task.h"
+#include "semphr.h"
 
 /* Priorities at which the tasks are created. */
 #define TASK_MY_TASK_PRIORITY			( tskIDLE_PRIORITY + 1 )
@@ -8,17 +9,22 @@
 /* Task stack sizes*/
 #define TASK_MY_TASK_STACK				( configMINIMAL_STACK_SIZE )
 #define	TASK_MY_SECOND_TASK_STACK		( configMINIMAL_STACK_SIZE )
-
-
+/* Task Handles */
 TaskHandle_t _taskSecondHandle = NULL;
+
+/* Semaphors */
+SemaphoreHandle_t _synchronisingSem = NULL;
 
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
 {
 	for (;;)
 	{
+		if (xSemaphoreTake(_synchronisingSem, portMAX_DELAY)) {
+			puts("Hi from My Task");
+			xSemaphoreGive(_synchronisingSem);
+		}
 		vTaskDelay(pdMS_TO_TICKS(200));
-		puts("Hi from My Task");
 	}
 }
 
@@ -27,8 +33,11 @@ void taskMySeccondTask(void* pvParameters)
 {
 	for (;;)
 	{
-		vTaskDelay(pdMS_TO_TICKS(100));
-		puts("Hi from My Second Task");
+		if (xSemaphoreTake(_synchronisingSem, portMAX_DELAY)) {
+			puts("Hi from My Second Task");
+			xSemaphoreGive(_synchronisingSem);
+		}
+		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
 }
 
@@ -52,6 +61,11 @@ void main(void)
 		(void*)2,    /* Parameter passed into the task. */
 		TASK_MY_SECOND_TASK_PRIORITY,/* Priority at which the task is created. */
 		&_taskSecondHandle);      /* Used to pass out the created task's handle. */
+
+
+	/* Create a binary semaphor and give it */
+	_synchronisingSem = xSemaphoreCreateBinary(void);
+	xSemaphoreGive(_synchronisingSem);
 
 	// Let the operating system take over :)
 	vTaskStartScheduler();
