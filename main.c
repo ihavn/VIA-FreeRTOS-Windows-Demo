@@ -10,9 +10,11 @@
 #define TASK_MY_TASK_STACK				( configMINIMAL_STACK_SIZE )
 #define	TASK_MY_SECOND_TASK_STACK		( configMINIMAL_STACK_SIZE )
 
-
+/* Task Handles */
 TaskHandle_t _taskSecondHandle = NULL;
 
+/* Semaphors */
+SemaphoreHandle_t _printfMutex = NULL;
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
 {
@@ -53,6 +55,10 @@ void main(void)
 		(void*)2,    /* Parameter passed into the task. */
 		TASK_MY_SECOND_TASK_PRIORITY,/* Priority at which the task is created. */
 		&_taskSecondHandle);      /* Used to pass out the created task's handle. */
+
+	/* Create a mutex */
+	_printfMutex = xSemaphoreCreateMutex();
+	xSemaphoreGive(_printfMutex);
 
 	// Let the operating system take over :)
 	vTaskStartScheduler();
