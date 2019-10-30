@@ -9,6 +9,7 @@
 /* Task stack sizes*/
 #define TASK_MY_TASK_STACK				( configMINIMAL_STACK_SIZE )
 #define	TASK_MY_SECOND_TASK_STACK		( configMINIMAL_STACK_SIZE )
+
 /* Task Handles */
 TaskHandle_t _taskSecondHandle = NULL;
 
