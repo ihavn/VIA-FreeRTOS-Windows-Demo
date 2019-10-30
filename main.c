@@ -15,6 +15,9 @@ TaskHandle_t _taskSecondHandle = NULL;
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
 	for (;;)
 	{
 		vTaskDelay(pdMS_TO_TICKS(200));
@@ -25,6 +28,9 @@ void taskMyTask(void* pvParameters)
 // --------------------------------------------------------------------------------------
 void taskMySeccondTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
 	for (;;)
 	{
 		vTaskDelay(pdMS_TO_TICKS(100));
