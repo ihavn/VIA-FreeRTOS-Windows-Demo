@@ -19,6 +19,9 @@ SemaphoreHandle_t _printfMutex = NULL;
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
 	for (;;)
 	{
 		if (xSemaphoreTake(_printfMutex, portMAX_DELAY)) {
@@ -32,6 +35,9 @@ void taskMyTask(void* pvParameters)
 // --------------------------------------------------------------------------------------
 void taskMySeccondTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
 	for (;;)
 	{
 		if (xSemaphoreTake(_printfMutex, portMAX_DELAY)) {
