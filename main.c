@@ -28,6 +28,9 @@ void protectedPuts(char* str)
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
 	for (;;)
 	{
 		protectedPuts("Hi from My Task");
@@ -38,6 +41,9 @@ void taskMyTask(void* pvParameters)
 // --------------------------------------------------------------------------------------
 void taskMySeccondTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
 	for (;;)
 	{
 		protectedPuts("Hi from My Second Task");
