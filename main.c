@@ -18,6 +18,9 @@ SemaphoreHandle_t _synchronisingSem = NULL;
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
 	for (;;)
 	{
 		if (xSemaphoreTake(_synchronisingSem, portMAX_DELAY)) {
@@ -31,6 +34,9 @@ void taskMyTask(void* pvParameters)
 // --------------------------------------------------------------------------------------
 void taskMySeccondTask(void* pvParameters)
 {
+	// Remove compiler warnings.
+	(void)pvParameters;
+
 	for (;;)
 	{
 		if (xSemaphoreTake(_synchronisingSem, portMAX_DELAY)) {
