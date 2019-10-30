@@ -14,7 +14,7 @@
 TaskHandle_t _taskSecondHandle = NULL;
 
 /* Semaphors */
-SemaphoreHandle_t _synchronisingSem = NULL;
+SemaphoreHandle_t _putsSem = NULL;
 
 // --------------------------------------------------------------------------------------
 void taskMyTask(void* pvParameters)
@@ -24,9 +24,9 @@ void taskMyTask(void* pvParameters)
 
 	for (;;)
 	{
-		if (xSemaphoreTake(_synchronisingSem, portMAX_DELAY)) {
+		if (xSemaphoreTake(_putsSem, portMAX_DELAY)) {
 			puts("Hi from My Task");
-			xSemaphoreGive(_synchronisingSem);
+			xSemaphoreGive(_putsSem);
 		}
 		vTaskDelay(pdMS_TO_TICKS(200));
 	}
@@ -40,9 +40,9 @@ void taskMySeccondTask(void* pvParameters)
 
 	for (;;)
 	{
-		if (xSemaphoreTake(_synchronisingSem, portMAX_DELAY)) {
+		if (xSemaphoreTake(_putsSem, portMAX_DELAY)) {
 			puts("Hi from My Second Task");
-			xSemaphoreGive(_synchronisingSem);
+			xSemaphoreGive(_putsSem);
 		}
 		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
@@ -71,8 +71,8 @@ void main(void)
 
 
 	/* Create a binary semaphor and give it */
-	_synchronisingSem = xSemaphoreCreateBinary(void);
-	xSemaphoreGive(_synchronisingSem);
+	_putsSem = xSemaphoreCreateBinary(void);
+	xSemaphoreGive(_putsSem);
 
 	// Let the operating system take over :)
 	vTaskStartScheduler();
