@@ -98,7 +98,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\VIAUC\Programming\Under_Git_Control\FreeRTOS\FreeRTOSv10.2.1\FreeRTOS\Source\portable\MSVC-MingW;D:\VIAUC\Programming\Under_Git_Control\FreeRTOS\FreeRTOSv10.2.1\FreeRTOS\Source\include;D:\VIAUC\Programming\Under_Git_Control\FreeRTOS\VIAFreeRTOS-Windows\VIAFreeRTOS-Windows;$(IncludePath)</IncludePath>
+    <IncludePath>D:\VIAUC\Programming\Under_Git_Control\FreeRTOS\FreeRTOSv10.2.1\FreeRTOS\Source\portable\MSVC-MingW;D:\VIAUC\Programming\Under_Git_Control\FreeRTOS\FreeRTOSv10.2.1\FreeRTOS\Source\include;$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
