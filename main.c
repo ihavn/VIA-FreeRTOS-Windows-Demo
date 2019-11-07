@@ -18,9 +18,11 @@ void taskMyTask(void* pvParameters)
 	// Remove compiler warnings.
 	(void)pvParameters;
 
+	// Initialise the xLastWakeTime variable with the current time.
+	TickType_t xLastWakeTime = xTaskGetTickCount();
 	for (;;)
 	{
-		vTaskDelay(pdMS_TO_TICKS(200));
+		vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
 		puts("Hi from My Task");
 	}
 }
