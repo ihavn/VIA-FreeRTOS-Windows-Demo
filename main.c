@@ -42,6 +42,7 @@ void taskTask(void* pvParameters)
 // --------------------------------------------------------------------------------------
 void main(void)
 {
+	/* Here the task code is reused */
 	/* Create the task, not storing the handle. */
 	xTaskCreate(
 		taskTask,       /* Function that implements the task. */
