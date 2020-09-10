@@ -4,9 +4,9 @@
 #include "semphr.h"
 
 /* Priorities at which the tasks are created. */
-#define TASK_A_PRIORITY		( tskIDLE_PRIORITY + 1 )
-#define	TASK_B_PRIORITY		( tskIDLE_PRIORITY + 2 )
-#define	TASK_C_PRIORITY		( tskIDLE_PRIORITY + 3 )
+#define TASK_A_PRIORITY		( tskIDLE_PRIORITY + 3 )
+#define	TASK_B_PRIORITY		( tskIDLE_PRIORITY + 1 )
+#define	TASK_C_PRIORITY		( tskIDLE_PRIORITY + 2 )
 /* Task stack sizes*/
 #define TASK_A_STACK		( configMINIMAL_STACK_SIZE )
 #define	TASK_B_STACK		( configMINIMAL_STACK_SIZE )
