@@ -33,9 +33,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FreeRTOSConfig.h">
-      <Filter>Configuration Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\croutine.h">
       <Filter>FreeRTOS Source\Include</Filter>
     </ClInclude>
@@ -74,6 +71,9 @@
     </ClInclude>
     <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\portable\MSVC-MingW\portmacro.h">
       <Filter>FreeRTOS Source\Include\Portable</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOSConfig.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

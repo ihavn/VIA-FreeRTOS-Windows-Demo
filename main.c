@@ -71,7 +71,7 @@ void main(void)
 
 
 	/* Create a binary semaphor and give it */
-	_putsSem = xSemaphoreCreateBinary(void);
+	_putsSem = xSemaphoreCreateBinary();
 	xSemaphoreGive(_putsSem);
 
 	// Let the operating system take over :)
