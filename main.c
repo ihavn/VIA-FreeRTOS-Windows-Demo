@@ -14,15 +14,26 @@
 TaskHandle_t _taskSecondHandle = NULL;
 
 /* Semaphors */
-SemaphoreHandle_t _printfMutex = NULL;
+SemaphoreHandle_t _dataMutex = NULL;
 
-// --------------------------------------------------------------------------------------
-void protectedPuts(char* str)
+static int sharedData = 0;
+
+void setData(int newValue)
 {
-	if (xSemaphoreTake(_printfMutex, portMAX_DELAY)) {
-		puts(str);
-		xSemaphoreGive(_printfMutex);
-	}
+	xSemaphoreTake(_dataMutex, portMAX_DELAY);
+	sharedData = newValue;
+	xSemaphoreGive(_dataMutex);
+}
+
+int getData()
+{
+	int tmp;
+
+	xSemaphoreTake(_dataMutex, portMAX_DELAY);
+	tmp = sharedData;
+	xSemaphoreGive(_dataMutex);
+
+	return tmp;
 }
 
 // --------------------------------------------------------------------------------------
@@ -30,10 +41,11 @@ void taskMyTask(void* pvParameters)
 {
 	// Remove compiler warnings.
 	(void)pvParameters;
+	int a;
 
 	for (;;)
 	{
-		protectedPuts("Hi from My Task");
+		a = getData();
 		vTaskDelay(pdMS_TO_TICKS(200));
 	}
 }
@@ -46,7 +58,7 @@ void taskMySeccondTask(void* pvParameters)
 
 	for (;;)
 	{
-		protectedPuts("Hi from My Second Task");
+		setData(7);
 		vTaskDelay(pdMS_TO_TICKS(1000));
 	}
 }
@@ -73,7 +85,7 @@ void main(void)
 		&_taskSecondHandle);      /* Used to pass out the created task's handle. */
 
 	/* Create a mutex - it is automaticly given when created */
-	_printfMutex = xSemaphoreCreateMutex();
+	_dataMutex = xSemaphoreCreateMutex();
 
 	// Let the operating system take over :)
 	vTaskStartScheduler();
