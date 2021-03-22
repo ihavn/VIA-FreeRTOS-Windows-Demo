@@ -1,6 +1,6 @@
 /*
- * FreeRTOS Kernel V10.2.1
- * Copyright (C) 2019 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+ * FreeRTOS V202012.00
+ * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -63,6 +63,7 @@
 #define configUSE_ALTERNATIVE_API				0
 #define configUSE_QUEUE_SETS					1
 #define configUSE_TASK_NOTIFICATIONS			1
+#define configTASK_NOTIFICATION_ARRAY_ENTRIES		5
 #define configSUPPORT_STATIC_ALLOCATION			0
 #define configMAX_PRIORITIES					( 7 )
 
