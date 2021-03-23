@@ -19,31 +19,37 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\croutine.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\event_groups.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\FreeRTOS.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\list.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\message_buffer.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\portable.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\projdefs.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\queue.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\semphr.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\stream_buffer.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\task.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\include\timers.h" />
-    <ClInclude Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\portable\MSVC-MingW\portmacro.h" />
-    <ClInclude Include="FreeRTOSConfig.h" />
+    <ClInclude Include="FreeRTOS\Source\include\atomic.h" />
+    <ClInclude Include="FreeRTOS\Source\include\croutine.h" />
+    <ClInclude Include="FreeRTOS\Source\include\deprecated_definitions.h" />
+    <ClInclude Include="FreeRTOS\Source\include\event_groups.h" />
+    <ClInclude Include="FreeRTOS\Source\include\FreeRTOS.h" />
+    <ClInclude Include="FreeRTOS\Source\include\FreeRTOSConfig.h" />
+    <ClInclude Include="FreeRTOS\Source\include\list.h" />
+    <ClInclude Include="FreeRTOS\Source\include\message_buffer.h" />
+    <ClInclude Include="FreeRTOS\Source\include\mpu_prototypes.h" />
+    <ClInclude Include="FreeRTOS\Source\include\mpu_wrappers.h" />
+    <ClInclude Include="FreeRTOS\Source\include\portable.h" />
+    <ClInclude Include="FreeRTOS\Source\include\projdefs.h" />
+    <ClInclude Include="FreeRTOS\Source\include\queue.h" />
+    <ClInclude Include="FreeRTOS\Source\include\semphr.h" />
+    <ClInclude Include="FreeRTOS\Source\include\StackMacros.h" />
+    <ClInclude Include="FreeRTOS\Source\include\stack_macros.h" />
+    <ClInclude Include="FreeRTOS\Source\include\stream_buffer.h" />
+    <ClInclude Include="FreeRTOS\Source\include\task.h" />
+    <ClInclude Include="FreeRTOS\Source\include\timers.h" />
+    <ClInclude Include="FreeRTOS\Source\portable\MSVC-MingW\portmacro.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\croutine.c" />
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\event_groups.c" />
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\list.c" />
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\portable\MemMang\heap_4.c" />
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\portable\MSVC-MingW\port.c" />
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\queue.c" />
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\stream_buffer.c" />
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\tasks.c" />
-    <ClCompile Include="..\..\FreeRTOSv10.2.1\FreeRTOS\Source\timers.c" />
+    <ClCompile Include="FreeRTOS\Source\croutine.c" />
+    <ClCompile Include="FreeRTOS\Source\event_groups.c" />
+    <ClCompile Include="FreeRTOS\Source\heap_4.c" />
+    <ClCompile Include="FreeRTOS\Source\list.c" />
+    <ClCompile Include="FreeRTOS\Source\portable\MSVC-MingW\port.c" />
+    <ClCompile Include="FreeRTOS\Source\queue.c" />
+    <ClCompile Include="FreeRTOS\Source\stream_buffer.c" />
+    <ClCompile Include="FreeRTOS\Source\tasks.c" />
+    <ClCompile Include="FreeRTOS\Source\timers.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -98,7 +104,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>D:\VIAUC\Programming\Under_Git_Control\FreeRTOS\FreeRTOSv10.2.1\FreeRTOS\Source\portable\MSVC-MingW;D:\VIAUC\Programming\Under_Git_Control\FreeRTOS\FreeRTOSv10.2.1\FreeRTOS\Source\include;$(ProjectDir);$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\FreeRTOS\Source\include;$(ProjectDir)\FreeRTOS\Source\portable\MSVC-MingW;$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
