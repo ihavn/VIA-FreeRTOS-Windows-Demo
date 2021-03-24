@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "FreeRTOS.h"
-#include "task.h"
-#include "semphr.h"
+#include <FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
 
 /* Priorities at which the tasks are created. */
 #define TASK_A_PRIORITY			( tskIDLE_PRIORITY + 1 )
@@ -16,7 +16,6 @@ TaskHandle_t _taskSecondHandle = NULL;
 SemaphoreHandle_t  syncSemaphore;
 
 void opA() {
-	
 	puts("OpA");
 }
 
