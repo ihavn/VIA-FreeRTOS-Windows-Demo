@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include "FreeRTOS.h"
-#include "task.h"
-#include "semphr.h"
+#include <FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
 
 /* Priorities at which the tasks are created. */
 #define TASK_MY_TASK_PRIORITY			( tskIDLE_PRIORITY + 1 )
 #define	TASK_MY_SECOND_TASK_PRIORITY	( tskIDLE_PRIORITY + 2 )
-#define	TASK_MY_THIRD_TASK_PRIORITY	( tskIDLE_PRIORITY + 3 )
+#define	TASK_MY_THIRD_TASK_PRIORITY		( tskIDLE_PRIORITY + 3 )
 /* Task stack sizes*/
 #define TASK_MY_TASK_STACK				( configMINIMAL_STACK_SIZE )
 #define	TASK_MY_SECOND_TASK_STACK		( configMINIMAL_STACK_SIZE )
