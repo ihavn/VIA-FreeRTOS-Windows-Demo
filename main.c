@@ -41,8 +41,9 @@ void taskMySeccondTask(void* pvParameters)
 // --------------------------------------------------------------------------------------
 void main(void)
 {
+	BaseType_t status;
 	/* Create the task, not storing the handle. */
-	xTaskCreate(
+	status = xTaskCreate(
 		taskMyTask,       /* Function that implements the task. */
 		"MyTask",          /* Text name for the task. */
 		TASK_MY_TASK_STACK,      /* Stack size in words, not bytes. */
@@ -50,14 +51,22 @@ void main(void)
 		TASK_MY_TASK_PRIORITY,/* Priority at which the task is created. */
 		NULL);      /* Used to pass out the created task's handle. */
 
+	if (pdPASS != status) {
+		// Task is not created!!!!
+	}
+
 		/* Create the task, storing the handle. */
-	xTaskCreate(
+	status = xTaskCreate(
 		taskMySeccondTask,       /* Function that implements the task. */
 		"MySecondTask",          /* Text name for the task. */
 		TASK_MY_SECOND_TASK_STACK,      /* Stack size in words, not bytes. */
 		(void*)2,    /* Parameter passed into the task. */
 		TASK_MY_SECOND_TASK_PRIORITY,/* Priority at which the task is created. */
 		&_taskSecondHandle);      /* Used to pass out the created task's handle. */
+
+	if (pdPASS != status) {
+		// Task is not created!!!!
+	}
 
 	// Let the operating system take over :)
 	vTaskStartScheduler();
