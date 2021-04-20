@@ -103,7 +103,7 @@ void main(void)
 		NULL);      /* Used to pass out the created task's handle. */
 
 
-	/* Create a binary semaphor and give it */
+	/* Create a binary semaphors */
 	_aSem = xSemaphoreCreateBinary(void);
 	_bSem = xSemaphoreCreateBinary(void);
 	_cSem = xSemaphoreCreateBinary(void);
