@@ -48,8 +48,8 @@ void taskMySeccondTask(void* pvParameters)
 
 	for (;;)
 	{
-		rxLen = xMessageBufferReceive(_messBuf_handle, rxBuf, 40, portMAX_DELAY);
-		printf("Received %d bytes: %s\n", rxLen, rxBuf);
+		rxLen = (int)xMessageBufferReceive(_messBuf_handle, rxBuf, 40, portMAX_DELAY);
+		printf("Received %d bytes: %s\n", rxLen, (char *)rxBuf);
 	}
 }
 
