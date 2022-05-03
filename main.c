@@ -27,11 +27,11 @@ void taskBTask(void* pvParameters)
 
 	for (;;)
 	{
-			xQueueReceive(_intQueue, &recValue, portMAX_DELAY);
+		xQueueReceive(_intQueue, &recValue, portMAX_DELAY);
 
-			xSemaphoreTake(_printfMutex, portMAX_DELAY);
-			printf("Received Task B: %d\n", recValue);
-			xSemaphoreGive(_printfMutex);
+		xSemaphoreTake(_printfMutex, portMAX_DELAY);
+		printf("Received Task B: %d\n", recValue);
+		xSemaphoreGive(_printfMutex);
 	}
 }
 
